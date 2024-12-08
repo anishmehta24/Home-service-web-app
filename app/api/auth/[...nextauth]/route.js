@@ -11,8 +11,8 @@ export const authOptions = {
         wellKnown: `https://api.descope.com/P2i0CRE6wBFg3OPCyHiLx1yK6v1k/.well-known/openid-configuration`,
         authorization: { params: { scope: "openid email profile" } },
         idToken: true,
-        clientId: `${process.env.CLIENT_ID}`,
-        clientSecret: "<Descope Access Key>",
+        clientId: `${process.env.NEXT_PUBLIC_CLIENT_ID}`,
+        clientSecret: `${process.env.NEXT_PUBLIC_DESCOPE_ACCESS_KEY}`,
         checks: ["pkce", "state"],
         profile(profile) {
             return {
@@ -45,7 +45,7 @@ export const authOptions = {
                         headers: {"Content-Type": "application/x-www-form-urlencoded"},
                         body: new URLSearchParams({
                             client_id: `${process.env.CLIENT_ID}`,
-                            client_secret: "<Descope Access Key>",
+                            client_secret: `${process.env.NEXT_PUBLIC_DESCOPE_ACCESS_KEY}`,
                             grant_type: "refresh_token",
                             refresh_token: token.refresh_token,
                         }),
